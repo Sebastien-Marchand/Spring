@@ -1,3 +1,5 @@
+package dev.service;
+
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
