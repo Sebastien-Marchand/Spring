@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 
 import dev.service.IPlatService;
 
-//@Order(10)
+@Order(10)
 @Controller
 public class OptionListerPlats implements IOptionMenu {
 

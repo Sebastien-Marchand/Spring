@@ -2,22 +2,18 @@ package dev.ihm;
 
 import dev.exception.PlatException;
 import dev.ihm.options.IOptionMenu;
-import dev.ihm.options.OptionAjouterPlat;
-import dev.ihm.options.OptionListerPlats;
-import dev.ihm.options.OptionTerminer;
-import dev.service.IPlatService;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
-@Component
+@Controller
 public class Menu {
 
-    private Map<Integer, IOptionMenu> actions = new HashMap<>();
+    private Map<Integer, IOptionMenu> actions;
 
     private String menu;
     private Scanner scanner;
@@ -38,6 +34,7 @@ public class Menu {
 
         return actions;
     }
+    
     public void afficher() {
 
         boolean continuer = true;
