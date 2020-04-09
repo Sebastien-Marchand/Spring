@@ -1,6 +1,7 @@
 package dev.dao;
 
 import dev.entite.Plat;
+
 import dev.exception.PlatException;
 
 import java.io.IOException;
@@ -10,13 +11,18 @@ import java.nio.file.StandardOpenOption;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import static java.util.stream.Collectors.toList;
 
+@Component
 public class PlatDaoFichier implements IPlatDao {
-
+	
+	
     private String fichierStockage;
 
-    public PlatDaoFichier(String fichierStockage) {
+    public PlatDaoFichier(@Value("${monFichierContenantDesPlats}")String fichierStockage) {
         this.fichierStockage = fichierStockage;
         if (!Files.exists(Paths.get(this.fichierStockage))) {
             try {
