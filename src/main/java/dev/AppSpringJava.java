@@ -3,6 +3,7 @@ package dev;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import dev.config.AppConfig;
+import dev.config.DataSourceConfig;
 import dev.ihm.Menu;
 
 public class AppSpringJava {
