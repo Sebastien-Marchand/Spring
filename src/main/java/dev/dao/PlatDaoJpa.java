@@ -2,35 +2,38 @@ package dev.dao;
 
 import java.util.List;
 
-import javax.sql.DataSource;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.context.annotation.Profile;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import dev.config.ArticleRowMapper;
 import dev.entite.Plat;
 
 @Repository
 @Profile("jpa")
 public class PlatDaoJpa implements IPlatDao{
+	
+	private EntityManager em;
 
-private JdbcTemplate jdbcTemplate;
-	
-	public PlatDaoJpa(DataSource ds) {
-		jdbcTemplate = new JdbcTemplate(ds);
+	@PersistenceContext
+	public void setEm(EntityManager em) {
+		this.em = em;
 	}
-	
+
 	@Override
 	public List<Plat> listerPlats() {
-		System.out.println("Affichage JPA");
-		return this.jdbcTemplate.query("select * from plat",new ArticleRowMapper());
+		TypedQuery<Plat> query = em.createQuery("select p from Plat p", Plat.class);
+		return query.getResultList();
 	}
 
 	@Override
+	@Transactional
 	public void ajouterPlat(String nomPlat, Integer prixPlat) {
-		String sql ="INSERT INTO PLAT ( nom, prix ) values (? , ? )";
-		jdbcTemplate.update(sql, nomPlat, prixPlat);
+		Plat plat = new Plat(nomPlat, prixPlat);
+		em.persist(plat);
 	}
 
 }

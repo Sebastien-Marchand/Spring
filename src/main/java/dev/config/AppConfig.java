@@ -21,7 +21,7 @@ import dev.service.PlatServiceVersion2;
 @ComponentScan("dev.service")
 @ComponentScan("dev.ihm")
 @PropertySource("app.properties")
-@Import(DataSourceConfig.class)
+@Import({DataSourceConfig.class,JpaConfig.class })
 public class AppConfig {
 	
 	@Bean
