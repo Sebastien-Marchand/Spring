@@ -2,9 +2,21 @@ package dev.entite;
 
 import java.util.Objects;
 
-public class Plat {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+import org.springframework.transaction.annotation.Transactional;
+
+
+@Entity
+@Transactional
+public class Plat {
+	
+	@Id
+	private Integer id;
+	
     private String nom;
+	
     private Integer prixEnCentimesEuros;
 
     public Plat() {
