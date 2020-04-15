@@ -29,7 +29,7 @@ public class PlatDaoJdbc implements IPlatDao{
 
 	@Override
 	public void ajouterPlat(String nomPlat, Integer prixPlat) {
-		String sql ="INSERT INTO PLAT ( nom, prix ) values (? , ? )";
+		String sql ="INSERT INTO plat ( nom, prix ) values (? , ? )";
 		jdbcTemplate.update(sql, nomPlat, prixPlat);
 	}
 

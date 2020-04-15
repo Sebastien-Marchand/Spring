@@ -8,27 +8,23 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import dev.config.DataSourceH2TestConfig;
 import dev.config.JpaConfig;
+import dev.dao.IPlatDao;
 import dev.dao.PlatDaoJpa;
 import dev.entite.Plat;
 
 //Creation du context
-@SpringJUnitConfig({ JpaConfig.class, PlatDaoJpa.class, DataSourceH2TestConfig.class })
-@ActiveProfiles({ "jpa", "Service1" })
-@TestPropertySource("classpath:test.properties")
+@SpringJUnitConfig({ JpaConfig.class, PlatDaoJpa.class,DataSourceH2TestConfig.class})
+@ActiveProfiles("jpa")
 class PlatDaoJpaTest {
 
 	@Autowired
-	PlatDaoJpa platDaoJpa;
+	IPlatDao platDaoJpa;
 
-	@Autowired
-	JdbcTemplate jdbcTemplate;
 
 	@Test
 	void listePlatsNonVide() {

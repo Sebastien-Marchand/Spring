@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 @Configuration
 @Import(DataSourceH2TestConfig.class)
 public class JdbcTestConfig{
+	
 	@Bean
 	public JdbcTemplate jdbcTemplate(DataSource dataSource){
 		return new JdbcTemplate(dataSource);
