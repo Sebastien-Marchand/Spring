@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -16,6 +17,7 @@ import dev.dao.PlatDaoJpa;
 
 @Configuration
 @EnableTransactionManagement
+@EnableJpaRepositories("dev.repository")
 @Import(PlatDaoJpa.class)
 public class JpaConfig {
 
